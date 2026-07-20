@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来信相叙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        body {
+            background-color: #fdfaf5;
+            color: #333;
+            line-height: 1.8;
+        }
+        nav {
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8b4e1a;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 26px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b4e1a;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #8b4e1a;
+            font-weight: 500;
+        }
+        section {
+            padding: 80px 5%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #8b4e1a;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+        .line-decorate {
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(to right, #8b4e1a, #c18a56);
+            margin: 12px auto 25px;
+            border-radius: 2px;
+        }
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .contact-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+        .form-card,
+        .info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(139,78,26,0.08);
+            border: 1px solid rgba(139,78,26,0.12);
+            transition: 0.3s ease;
+        }
+        .form-card:hover,
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(139,78,26,0.14);
+        }
+        .form-card h3,
+        .info-card h3 {
+            font-size: 22px;
+            color: #8b4e1a;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-card h3::before,
+        .info-card h3::before {
+            content: "";
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(to bottom, #8b4e1a, #c18a56);
+            border-radius: 2px;
+        }
+        .form-row {
+            margin-bottom: 22px;
+        }
+        .form-row label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .form-row input,
+        .form-row textarea {
+            width: 100%;
+            border: 1px solid #e0d4c6;
+            border-radius: 12px;
+            padding: 14px 16px;
+            background: #fdfaf5;
+            color: #444;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-row input:focus,
+        .form-row textarea:focus {
+            border-color: #8b4e1a;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(139,78,26,0.08);
+        }
+        .form-row textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8b4e1a, #a5652a);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #6d3c11, #8b4e1a);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139,78,26,0.35);
+        }
+        .info-item {
+            padding: 18px 0;
+            border-bottom: 1px dashed #e0d4c6;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(139,78,26,0.08);
+            color: #8b4e1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .info-text h4 {
+            font-size: 16px;
+            color: #8b4e1a;
+            margin-bottom: 6px;
+        }
+        .info-text p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .info-text a {
+            color: #8b4e1a;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+        .decorative-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d8b98a, transparent);
+            margin: 30px 0;
+        }
+        .info-en {
+            font-size: 14px;
+            color: #777;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        footer {
+            background-color: #4a3322;
+            color: #fff;
+            padding: 40px 5%;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .copyright {
+            width: 100%;
+            text-align: center;
+            padding: 18px;
+            background-color: #352519;
+            color: #bbb;
+            font-size: 14px;
+        }
+        @media(max-width:992px){
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media(max-width:768px){
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .form-card,
+            .info-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">非遗·星语传薪</div>
+    <div class="nav-links">
+        <a href="index.html">传薪首页</a>
+        <a href="library.html">匠艺藏珍</a>
+        <a href="video.html">匠作影录</a>
+        <a href="robot.html">星语智问</a>
+        <a href="result.html">传薪成果</a>
+        <a href="team.html">薪火同路人</a>
+        <a href="contact.html" class="active">来信相叙</a>
+    </div>
+</nav>
+
+<section>
+    <h2 class="section-title">来信相叙</h2>
+    <div class="line-decorate"></div>
+    <p class="page-subtitle">
+        若您对本项目有合作意向、资料补充、传承建议或学术交流需求，欢迎通过下方表单与我们取得联系。
+    </p>
+
+    <div class="contact-wrapper">
+        <!-- 左侧留言表单 -->
+        <div class="form-card">
+            <h3>留言咨询</h3>
+            <form>
+                <div class="form-row">
+                    <label for="name">您的姓名</label>
+                    <input type="text" id="name" placeholder="请输入您的姓名">
+                </div>
+                <div class="form-row">
+                    <label for="email">电子邮箱</label>
+                    <input type="email" id="email" placeholder="请输入您的电子邮箱">
+                </div>
+                <div class="form-row">
+                    <label for="subject">咨询主题</label>
+                    <input type="text" id="subject" placeholder="例如：项目合作、资料补充、传承建议">
+                </div>
+                <div class="form-row">
+                    <label for="message">留言内容</label>
+                    <textarea id="message" placeholder="请输入您想咨询的内容，我们将在收到后尽快回复您。"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">发送留言</button>
+            </form>
+        </div>
+
+        <!-- 右侧联系方式 -->
+        <div class="info-card">
+            <h3>联系方式</h3>
+
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-text">
+                    <h4>项目地址</h4>
+                    <p>沈阳大学非遗传承创新工作室</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">📞</div>
+                <div class="info-text">
+                    <h4>联系电话</h4>
+                    <p>14733879148</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">✉️</div>
+                <div class="info-text">
+                    <h4>电子邮箱</h4>
+                    <p><a href="mailto:wangyuxin@heritage.com">wangyuxin@heritage.com</a></p>
+                </div>
+            </div>
+
+            <div class="decorative-line"></div>
+
+            <h3 style="font-size: 20px; margin-bottom: 15px;">常见咨询</h3>
+            <div class="info-text">
+                <p style="margin-bottom: 10px;">• 如何申请加入非遗传承志愿者队伍？</p>
+                <p style="margin-bottom: 10px;">• 如何补充地方非遗技艺资料？</p>
+                <p style="margin-bottom: 10px;">• 如何开展校企合作与文化传播活动？</p>
+                <p>• 如何获取项目展示与汇报相关资料？</p>
+            </div>
+
+            <div class="decorative-line"></div>
+
+            <p class="info-en">
+                If you are interested in our project, welcome to contact us for further communication, cooperation and resource sharing. We look forward to hearing your suggestions on intangible cultural heritage inheritance and digital dissemination.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h3>星语传薪 - 中华非遗文脉新声</h3>
+</footer>
+<div class="copyright">
+    © 2026 星语传薪 非遗传承项目 版权所有
+</div>
+</body>
+</html>

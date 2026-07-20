@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匠作影录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        body {
+            background-color: #fdfaf5;
+            color: #333;
+            line-height: 1.8;
+        }
+        nav {
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8b4e1a;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 26px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b4e1a;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #8b4e1a;
+            font-weight: 500;
+        }
+        section {
+            padding: 80px 5%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #8b4e1a;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+        .line-decorate {
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(to right, #8b4e1a, #c18a56);
+            margin: 12px auto 35px;
+            border-radius: 2px;
+        }
+        .cn-text-center {
+            text-align:center;
+            text-indent:0;
+            max-width: 1050px;
+            margin: 0 auto 40px;
+            font-size: 16px;
+            color: #444;
+        }
+        /* 视频容器样式 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .video-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: 0.35s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(139,78,26,0.12);
+        }
+        .video-box {
+            width: 100%;
+        }
+        .video-box iframe {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            border: none;
+        }
+        .video-info {
+            padding: 20px;
+        }
+        .video-info h4 {
+            color: #8b4e1a;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .video-cn {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .video-en {
+            color: #777;
+            font-size: 13px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #4a3322;
+            color: #fff;
+            padding: 40px 5%;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .copyright {
+            width:100%;
+            text-align:center;
+            padding:18px;
+            background-color:#352519;
+            color:#bbb;
+            font-size:14px;
+        }
+        @media(max-width:768px){
+            .nav-links{gap:12px; font-size:13px;}
+            .section-title {font-size: 28px;}
+            .video-grid {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">非遗·星语传薪</div>
+    <div class="nav-links">
+        <a href="index.html">传薪首页</a>
+        <a href="library.html">匠艺藏珍</a>
+        <a href="video.html" class="active">匠作影录</a>
+        <a href="robot.html">星语智问</a>
+        <a href="results.html">传薪成果</a>
+        <a href="team.html">薪火同路人</a>
+        <a href="contact.html">来信相叙</a>
+    </div>
+</nav>
+
+<section>
+    <h2 class="section-title">匠作影录</h2>
+    <div class="line-decorate"></div>
+    <p class="cn-text-center">
+    近距离完整观看非遗匠人手工制作全过程，完整记录从原料处理、造型雕琢到成品收尾的每一道工序。
+    透过镜头直面传统手艺的细腻细节，沉浸式感受代代传承的匠心坚守，触摸流淌千年的东方技艺温度。
+</p>
+<p class="cn-text-center" style="margin-top:10px; font-size:14px; color:#666; font-style:italic;">
+    Watch the whole handmade production process of intangible cultural heritage craftsmen up close, recording every procedure from raw material processing, shaping and carving to finished product finishing.
+    Face the delicate details of traditional crafts through the lens, immerse yourself in the ingenuity passed down from generation to generation, and feel the oriental craft temperature that has flowed for thousands of years.
+</p>
+
+    <div class="video-grid">
+        <!-- 视频1 苏绣 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951221473757&bvid=BV1QUKm6qEnz&cid=40125009282&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>传统苏绣制作工艺</h4>
+                <p class="video-cn">一针一线手工刺绣全过程，展示传统纹样走线、配色、装裱完整流程。匠人耗费数十日精心勾勒花鸟山水，将江南温婉韵味藏于绸缎之上，是四大名绣中精巧雅致的代表技艺。</p>
+                <p class="video-en">The whole handmade embroidery process shows thread arrangement, color matching and mounting of traditional patterns. Craftsmen spend dozens of days drawing flowers, birds and landscapes, hiding the gentle charm of Jiangnan on silk, which is the exquisite representative of the Four Great Chinese Embroideries.</p>
+            </div>
+        </div>
+        <!-- 视频2 剪纸 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951305228341&bvid=BV1ANKU6dEbg&cid=40126057270&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>民间剪纸手工技艺</h4>
+                <p class="video-cn">非遗匠人现场刻制吉祥窗花，还原传统剪纸的折叠、雕刻手法。一张红纸经过折叠雕琢，化作寓意福禄、团圆的民俗纹样，每逢节庆便是家家户户必不可少的装饰。</p>
+                <p class="video-en">Intangible cultural heritage craftsmen carve auspicious window grilles on site and restore the folding and carving techniques of traditional paper-cutting. A piece of red paper is folded and carved into folk patterns implying fortune and reunion, which is essential decoration for every family during festivals.</p>
+            </div>
+        </div>
+        <!-- 视频3 东阳木雕 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951321943308&bvid=BV16gKU6HEFJ&cid=40126513910&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>传统东阳木雕技艺</h4>
+                <p class="video-cn">选用天然硬木，匠人以刻刀代笔，层层雕琢山水瑞兽、花鸟纹样。工艺繁复细腻，多用于古建筑门窗、古典家具装饰，是中式雕刻艺术极具代表性的非遗门类。</p>
+                <p class="video-en">Using natural hardwood, craftsmen take carving knives as pens to carve landscapes, auspicious beasts, flowers and birds layer by layer. The complex and delicate craftsmanship is mostly used for ancient building doors and windows and classical furniture decoration, which is a very representative intangible heritage category of Chinese carving art.</p>
+            </div>
+        </div>
+        <!-- 视频4 陶艺 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951321941827&bvid=BV16gKU6HEyp&cid=40126123686&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>古法手工陶艺拉坯</h4>
+                <p class="video-cn">从揉泥、拉坯、雕刻到上釉，完整记录传统陶瓷制作工序。泥土在匠人手中旋转成型，经高温窑火淬炼，诞生温润细腻的瓷器，承载中国人千年雅致的生活审美。</p>
+                <p class="video-en">It fully records the traditional ceramic production procedures from kneading clay, wheel throwing, carving to glazing. Clay rotates and takes shape in the hands of craftsmen, and becomes warm and delicate porcelain after high-temperature kiln fire, carrying the elegant life aesthetics of Chinese people for thousands of years.</p>
+            </div>
+        </div>
+        <!-- 视频5 民族扎染工艺 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951322074738&bvid=BV1ngKU6pEcU&cid=40126515755&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>民族手工扎染工艺</h4>
+                <p class="video-cn">采用天然植物染料，通过捆扎、浸染、固色古法流程制作布料。每一块布料晕染纹理独一无二，承载少数民族民俗记忆，如今广泛运用于文创服饰设计之中。</p>
+                <p class="video-en">Natural plant dyes are used to make cloth through ancient processes of binding, dyeing and color fixing. The halo texture of each piece of cloth is unique, carrying the folk memory of ethnic minorities, and is now widely used in cultural and creative clothing design.</p>
+            </div>
+        </div>
+        <!-- 视频6 戏曲脸谱绘制 -->
+        <div class="video-card">
+            <div class="video-box">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116951355561200&bvid=BV1NcKU6bEjT&cid=40126907767&p=1&danmaku=0&high_quality=1" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-info">
+                <h4>传统戏曲脸谱绘制</h4>
+                <p class="video-cn">手工调配矿物颜料，依照戏曲人物性格勾勒脸谱纹样。不同色彩代表忠奸善恶，一笔一画蕴藏戏曲文化底蕴，是中华戏曲非遗标志性视觉符号。</p>
+                <p class="video-en">Manually mix mineral pigments and outline facial patterns according to the characters of opera figures. Different colors represent loyalty, treachery, good and evil, and every stroke contains the heritage of opera culture, which is a landmark visual symbol of Chinese opera intangible heritage.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h3>星语传薪 - 中华非遗文脉新声</h3>
+</footer>
+<div class="copyright">
+    © 2026 星语传薪 非遗传承项目 版权所有
+</div>
+</body>
+</html>

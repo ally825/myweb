@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星语传薪 - 传薪成果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        body {
+            background-color: #fdfaf5;
+            color: #333;
+            line-height: 1.75;
+        }
+        /* 导航栏 全站统一 */
+        nav {
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8b4e1a;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 26px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b4e1a;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #8b4e1a;
+            font-weight: 500;
+        }
+        section {
+            padding: 70px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        /* 页面大标题区域 */
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #8b4e1a;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+        .line-decorate {
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(to right, #8b4e1a, #c18a56);
+            margin: 12px auto 30px;
+            border-radius: 2px;
+        }
+        .en-text {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            max-width: 920px;
+            margin: 0 auto 18px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .cn-text-desc {
+            max-width: 1000px;
+            margin: 0 auto 45px;
+            font-size: 16px;
+            color: #444;
+            text-align: center;
+        }
+        /* 成果卡片通用样式 */
+        .result-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 18px rgba(139,78,26,0.06);
+            transition: 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(139,78,26,0.11);
+        }
+        .result-card h2 {
+            font-size: 25px;
+            color: #8b4e1a;
+            margin-bottom: 12px;
+        }
+        .card-en-sub {
+            color: #888;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .card-cn-text {
+            line-height: 1.75;
+            font-size: 16px;
+            color: #444;
+        }
+        /* 图片展示区域统一规范 */
+        .image-show-wrap {
+            margin-top: 28px;
+        }
+        .image-subtitle {
+            font-size: 20px;
+            color: #8b4e1a;
+            margin: 26px 0 14px;
+            padding-left: 10px;
+            border-left: 4px solid #8b4e1a;
+        }
+        /* 三列网格 规整对齐 */
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .img-item {
+            background: #fcf8f2;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee8e0;
+            display: flex;
+            flex-direction: column;
+        }
+        /* 固定图片最大高度，全部卡片等高，不会高低杂乱 */
+        .pic-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pic-box img{
+            max-width: 96%;
+            max-height: 96%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .img-item p {
+            text-align: center;
+            padding: 9px 8px;
+            font-size: 14px;
+            color: #555;
+            margin-top: auto;
+        }
+        /* 底部总结区块 */
+        .summary-box {
+            margin-top: 36px;
+            padding: 28px 32px;
+            background: #f3ede4;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 18px rgba(139,78,26,0.06);
+        }
+        .summary-box h3 {
+            color: #8b4e1a;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        /* 页脚 */
+        footer {
+            background-color: #4a3322;
+            color: #fff;
+            padding: 36px 5%;
+            margin-top: 70px;
+            text-align: center;
+        }
+        .copyright {
+            width:100%;
+            text-align:center;
+            padding:16px;
+            background-color:#352519;
+            color:#bbb;
+            font-size:14px;
+        }
+        /* 移动端适配 */
+        @media(max-width:768px){
+            .nav-links{gap:12px; font-size:13px;}
+            .section-title {font-size: 28px;}
+            .img-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            section {
+                padding: 50px 4%;
+            }
+            .pic-box {
+                height: 200px;
+            }
+        }
+        @media(max-width:480px){
+            .img-grid {
+                grid-template-columns: 1fr;
+            }
+            .pic-box {
+                height: 180px;
+            }
+            .result-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 顶部导航栏 修复首页链接href -->
+<nav>
+    <div class="logo">非遗·星语传薪</div>
+    <div class="nav-links">
+        <!-- 修复点：href="index.html" 替换原来的空引号 -->
+        <a href="index.html">传薪首页</a>
+        <a href="library.html">匠艺藏珍</a>
+        <a href="video.html">匠作影录</a>
+        <a href="robot.html">星语智问</a>
+        <a href="result.html" class="active">传薪成果</a>
+        <a href="team.html">薪火同路人</a>
+        <a href="contact.html">来信相叙</a>
+    </div>
+</nav>
+
+<section>
+    <!-- 页面总标题 -->
+    <h2 class="section-title">传薪成果</h2>
+    <div class="line-decorate"></div>
+    <p class="en-text">Achievement Display of Digital Intangible Cultural Heritage Platform, including hardware physical products, official website system and competition honors.</p >
+    <p class="cn-text-desc">本页面完整展示项目全部落地成果，涵盖自研交互机器人硬件开发零部件、整套非遗数字化科普网页平台、团队科创赛事荣誉、线上文化传播公众号四大板块，直观呈现项目从创意构思到硬件开发、网页平台搭建、线上文化传播的完整实践产出，全方位展现数字化赋能非遗传承的实践价值。</p >
+
+    <!-- 成果1：交互机器人文字介绍 -->
+    <div class="result-card">
+        <h2>一、星语智问交互机器人成果</h2>
+        <p class="card-en-sub">The Core Achievement: Interactive Intangible Heritage Dialogue Robot</p >
+        <p class="card-cn-text">
+            项目自研非遗专属交互机器人，搭载非遗知识库智能问答系统，实现语音、文字双渠道对话交互。机器人内置刺绣、木雕、陶艺、扎染等数十类传统工艺完整图文、影像素材，可自动完成非遗技艺讲解、工艺细节科普、传承人故事介绍。
+            <br><br>
+            硬件基于ESP32主控开发，搭配Arduino基础外设拓展电路，自主绘制PCB电路板完成硬件集成。区别于通用对话模型，机器人针对非遗专业内容完成专项微调，解决传统AI对民俗、传统工艺认知模糊的问题；支持实时连续对话、沉浸式科普导览，可作为线下展馆配套数字导览设备，也可线上网页端直接访问，打通线上线下非遗交互场景。
+        </p >
+    </div>
+
+    <!-- 成果2：实物+奖状+公众号 规整图片区 -->
+    <div class="result-card">
+        <h2>二、实物成果、赛事荣誉与线上传播账号</h2>
+        <p class="card-en-sub">Hardware Parts, Competition Awards & Online Cultural Communication Account</p >
+        <p class="card-cn-text">
+            本板块展示项目硬件研发主控芯片、焊接制作工具、PCB电路板等实物零部件与焊接组装过程实拍图，团队参与科创赛事获得的荣誉奖状，以及配套运营的中英文化传播公众号，完整呈现项目硬件开发、赛事认可、线上长效传播的全链条成果。
+        </p >
+        <div class="image-show-wrap">
+            <!-- 硬件零件6张图 整齐两行三列 -->
+            <h3 class="image-subtitle">机器人硬件零件实拍</h3>
+            <div class="img-grid">
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/arduino.png" alt="Arduino Uno主控">
+                    </div>
+                    <p>Arduino Uno基础控制板</p >
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/esp32.png" alt="ESP32核心主控">
+                    </div>
+                    <p>ESP32 Wifi语音主控模块</p >
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/tools.png" alt="焊接工具套装">
+                    </div>
+                    <p>硬件焊接调试工具套装</p >
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/pcb1.png" alt="自制PCB电路板">
+                    </div>
+                    <p>自主绘制PCB空电路板</p >
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/soldering.jpg" alt="电路板焊接">
+                    </div>
+                    <p>电路板手工焊接实操</p >
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/esp-run.jpg" alt="开发板通电调试">
+                    </div>
+                    <p>硬件通电功能调试</p >
+                </div>
+            </div>
+
+            <!-- 赛事与公众号 4张图 -->
+            <h3 class="image-subtitle">赛事荣誉与线上文化传播账号</h3>
+            <div class="img-grid">
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/奖状一.png" alt="互联网+校赛三等奖">
+                    </div>
+                    <p>中国国际大学生创新大赛 校赛三等奖</p>
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/奖状二.png" alt="CFCC区域赛二等奖">
+                    </div>
+                    <p>CFCC智慧经济双创竞赛 区域二等奖</p>
+                </div>
+                <div class="img-item">
+                    <div class="pic-box">
+                        <img src="img/公众号.jpg" alt="公众号主页">
+                    </div>
+                    <p>公众号主页展示</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成果3：网页平台介绍 -->
+    <div class="result-card">
+        <h2>三、数字化非遗科普综合平台</h2>
+        <p class="card-en-sub">Full-stack Digital Popular Science Platform for Intangible Cultural Heritage</p >
+        <p class="card-cn-text">
+            搭建集观赏、查询、交互、学习于一体的一站式网页平台，完整实现网站全部功能模块开发，统一古风棕调视觉设计体系，适配电脑、手机多终端访问，解决传统非遗宣传页面老旧、交互单一的痛点。平台包含匠艺藏珍数字资料库、匠作影录工艺影像库、星语智问对话交互模块、项目纪实四大功能分区，完整覆盖非遗线上科普全流程需求。
+            <br><br>
+            针对当代青年阅读、交互习惯设计轻量化数字化传播方案，摒弃线下展馆静态图文的老旧模式，采用网页交互、智能对话、短视频影像结合的年轻化表达形式，有效消解非遗与青少年之间的认知隔阂。
+        </p >
+    </div>
+
+    <!-- 项目总结 -->
+    <div class="summary-box">
+        <h3>项目整体价值成果</h3>
+        <p class="card-cn-text" style="max-width:820px;margin:0 auto;">
+            本项目以数字技术赋能非遗传承，完成ESP32硬件交互机器人开发、完整非遗网页平台搭建、两项科创赛事获奖、星火传音中英文化公众号运营四大核心成果，为非遗传承断层、传播形式单一、青年受众认知薄弱等行业现存问题提供可落地数字化解决方案，实现传统非遗文化的创新性转化与创造性传承。
+        </p >
+    </div>
+</section>
+
+<footer>
+    <h3>星语传薪 - 中华非遗文脉新声</h3>
+</footer>
+<div class="copyright">
+    © 2026 星语传薪 非遗传承项目 版权所有
+</div>
+</body>
+</html>
