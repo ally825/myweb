@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星语传薪 - 传薪首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        body {
+            /* 背景图文件名保持原样，替换图片直接改这里文件名 */
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("a76c6f118f91e6e8dd7e5f2297a5a4c7.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .title-box {
+            width: 100%;
+            max-width: 900px;
+        }
+        .title-box h1 {
+            font-size: 56px;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 12px #000;
+            line-height: 1.2;
+        }
+        /* 两行标题单独控制，完全居中对齐 */
+        .title-top {
+            margin-bottom: 8px;
+        }
+        .title-bottom {
+            margin-bottom: 12px;
+        }
+        .title-box p {
+            font-size: 20px;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+        /* 核心：3列网格布局，两行按钮 */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px 30px;
+            max-width: 750px;
+            width: 100%;
+        }
+        .menu-grid a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 14px 10px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50px;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .menu-grid a:hover {
+            background: #8b4e1a;
+            border-color: #8b4e1a;
+            transform: translateY(-4px);
+        }
+        /* 手机自适应，自动变成1列竖排 */
+        @media(max-width:768px){
+            .menu-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .title-box h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-box">
+        <!-- 分开两行h1，完美居中对齐 -->
+        <h1 class="title-top">“星”语传薪</h1>
+        <h1 class="title-bottom">中华非遗文脉新声</h1>
+        <p>Interactive Robot · Inheritance of Chinese Intangible Cultural Heritage</p>
+    </div>
+    <!-- 3列2行导航按钮，全部页面链接完整 -->
+    <div class="menu-grid">
+        <a href="library.html">匠艺藏珍</a>
+        <a href="video.html">匠作影录</a>
+        <a href="robot.html">星语智问</a>
+        <a href="result.html">传薪成果</a>
+        <a href="team.html">薪火同路人</a>
+        <a href="contact.html">来信相叙</a>
+    </div>
+</body>
+</html>
